@@ -113,6 +113,7 @@ std::string Block::GetType() const {
 
 Tile Block::GetTileFromShape(int tilenumber) const {
 	// Testing the github-syncing.
+	// TODO: should check for out of bounds
 	return m_shape[tilenumber - 1];
 }
 
