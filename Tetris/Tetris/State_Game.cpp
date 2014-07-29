@@ -2,6 +2,7 @@
 #include "State_Game.h"
 #include "BlockManager.h"
 #include "InputConverter.h"
+#include "TextureManager.h"
 
 State_Game::State_Game(sf::RenderWindow *window) {
 	m_window = window;
@@ -11,7 +12,8 @@ State_Game::~State_Game(void){
 }
 
 bool State_Game::Enter() {
-	m_block_manager = new BlockManager;
+	m_texture_manager = new TextureManager("../data/textures/");
+	m_block_manager = new BlockManager(m_texture_manager);
 	m_block_manager->SetBlockSpeed(3);
 
 	m_input_converter = new InputConverter;

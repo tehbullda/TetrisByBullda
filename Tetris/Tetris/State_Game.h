@@ -3,6 +3,7 @@
 #include "State.h"
 
 class BlockManager;
+class TextureManager;
 class InputConverter;
 
 class State_Game : public State {
@@ -28,6 +29,7 @@ private:
 	sf::View m_view;
 
 	BlockManager *m_block_manager;
+	TextureManager *m_texture_manager;
 	InputConverter *m_input_converter;
 	std::string m_input;
 

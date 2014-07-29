@@ -1,15 +1,16 @@
 #include "stdafx.h"
 #include "BlockManager.h"
 #include "Randomizer.h"
+#include "TextureManager.h"
 
 #define GRID_MAX_WIDTH 10
 #define GRID_MAX_HEIGHT 22
 #define MAX_TILES_PER_BLOCK 4
 
-BlockManager::BlockManager() /*: m_maxgridWidth(10),
+BlockManager::BlockManager(TextureManager *tex_mgr) /*: m_maxgridWidth(10),
 m_maxgridHeight(22),
 m_maxTilesperBlock(4) */{
-
+	m_texture_manager = tex_mgr;
 	for (int i = 0; i < GRID_MAX_WIDTH; i++) {
 		for (int j = 0; j < GRID_MAX_HEIGHT; j++) {
 			Tile tile = {i,j,true};
@@ -56,7 +57,7 @@ void BlockManager::Update(float deltatime, std::string input) {
 		}
 	}
 	else {
-		AddBlock(new Block(static_cast<BlockType>(Randomizer::GetRandomInt(1, 7))));
+		AddBlock(new Block(static_cast<BlockType>(Randomizer::GetRandomInt(1, 7)), m_texture_manager));
 	}
 }
 

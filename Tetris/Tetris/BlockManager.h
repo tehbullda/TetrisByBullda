@@ -3,9 +3,11 @@
 #include <list>
 #include "Block.h"
 
+class TextureManager;
+
 class BlockManager {
 public:
-	BlockManager();
+	BlockManager(TextureManager *tex_mgr);
 	~BlockManager();
 
 	void AddBlock(Block* block);
@@ -19,6 +21,7 @@ public:
 	void SetBlockSpeed(int speed);
 
 private:
+	TextureManager *m_texture_manager;
 	std::vector<Block*> m_blocks;
 	std::vector<Tile> m_tilegrid;
 	const static int m_maxgridWidth, m_maxgridHeight, m_maxTilesperBlock;

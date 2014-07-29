@@ -15,10 +15,11 @@ enum BlockType {
 	Square
 };
 
+class TextureManager;
 
 class Block {
 public:
-	Block(BlockType type);
+	Block(BlockType type, TextureManager *tex_mgr);
 	~Block();
 
 	std::string GetType() const;
@@ -26,8 +27,13 @@ public:
 	Tile GetTileFromShape(int tilenumber) const;
 	bool MoveBlockDown();
 	bool IsActive() const;
+
+private:
+	void SetSpritePositions();
+
 private:
 	std::string m_type;
 	std::vector<Tile> m_shape;
 	bool m_active;
+	int m_gridDistanceFromEdge_X, m_gridDistanceFromEdge_Y;
 };

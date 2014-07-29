@@ -14,7 +14,7 @@ Engine::~Engine() {
 }
 
 bool Engine::Init() {
-	m_window = new sf::RenderWindow(sf::VideoMode(1024, 768), "Tetris", sf::Style::Titlebar | sf::Style::Close);
+	m_window = new sf::RenderWindow(sf::VideoMode(1280, 720), "Tetris", sf::Style::Titlebar | sf::Style::Close);
 	m_state_manager = new StateManager();
 	m_state_manager->AddState(new State_Game(m_window));
 	m_state_manager->SetState("Game");
