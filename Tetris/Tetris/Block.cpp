@@ -112,12 +112,7 @@ std::string Block::GetType() const {
 }
 
 Tile Block::GetTileFromShape(int tilenumber) const {
-	if (tilenumber > 0 && tilenumber <= 4) {
-		return m_shape[tilenumber - 1];
-	}
-	//else {
-	//	return Tile{ 26, 26, false };
-	//}
+	return m_shape[tilenumber - 1];
 }
 
 bool Block::MoveBlockDown() {
