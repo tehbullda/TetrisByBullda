@@ -2,13 +2,21 @@
 #include "BlockManager.h"
 #include "Randomizer.h"
 
-BlockManager::BlockManager() {
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 22; j++) {
+#define GRID_MAX_WIDTH 10
+#define GRID_MAX_HEIGHT 22
+#define MAX_TILES_PER_BLOCK 4
+
+BlockManager::BlockManager() /*: m_maxgridWidth(10),
+m_maxgridHeight(22),
+m_maxTilesperBlock(4) */{
+
+	for (int i = 0; i < GRID_MAX_WIDTH; i++) {
+		for (int j = 0; j < GRID_MAX_HEIGHT; j++) {
 			Tile tile = {i,j,true};
-			m_tiles.push_back(tile);
+			m_tilegrid.push_back(tile);
 		}
 	}
+	
 }
 
 BlockManager::~BlockManager() {
@@ -19,12 +27,12 @@ void BlockManager::AddBlock(Block* block) {
 	if (block != nullptr && block->GetType() != "") { // If the block exists and isn't a faulty type
 		m_blocks.push_back(block);
 		m_current_block = block;
-		for (unsigned int i = 0; i < m_tiles.size(); i++) {
-			for (int j = 1; j < 4; j++) {
-				if (m_tiles[i].x == block->GetTileFromShape(j).x) {
-					if (m_tiles[i].y == block->GetTileFromShape(j).y) {
-						if (m_tiles[i].open) {
-							m_tiles[i].open = false; // Make the tiles now occupied by this block closed.
+		for (unsigned int i = 0; i < m_tilegrid.size(); i++) {
+			for (int j = 1; j < MAX_TILES_PER_BLOCK; j++) {
+				if (m_tilegrid[i].x == block->GetTileFromShape(j).x) {
+					if (m_tilegrid[i].y == block->GetTileFromShape(j).y) {
+						if (m_tilegrid[i].open) {
+							m_tilegrid[i].open = false; // Make the tiles now occupied by this block closed.
 						}
 						else {
 							// If any of the starting-tiles is already occupied, the game is over.
@@ -67,15 +75,15 @@ bool BlockManager::ValidateMove(std::string move) {
 
 void BlockManager::DrawBlocks(sf::RenderWindow *window) {
 	for (unsigned int i = 0; i < m_blocks.size(); i++){
-		for (int j = 1; j < 4; j++) {
+		for (int j = 1; j < MAX_TILES_PER_BLOCK; j++) {
 			if (!m_blocks[i]->GetTileFromShape(j).open) { // If any of the four tiles in the shape has been removed due to a line-removal then that tile will not be drawn
 				window->draw(m_blocks[i]->GetTileFromShape(j).sprite);
 			}
 		}
 	}
-	/*for (int i = 0; i < m_tiles.size(); i++) { // Another way to do the same thing, not sure which one is best
-		if (!m_tiles[i].open) {
-			window->draw(m_tiles[i].sprite);
+	/*for (int i = 0; i < m_tilegrid.size(); i++) { // Another way to do the same thing, not sure which one is best
+		if (!m_tilegrid[i].open) {
+			window->draw(m_tilegrid[i].sprite);
 		}
 	}*/
 }

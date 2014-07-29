@@ -20,7 +20,8 @@ public:
 
 private:
 	std::vector<Block*> m_blocks;
-	std::vector<Tile> m_tiles;
+	std::vector<Tile> m_tilegrid;
+	const static int m_maxgridWidth, m_maxgridHeight, m_maxTilesperBlock;
 	Block *m_current_block;
 	int m_speed;
 	float m_time;
