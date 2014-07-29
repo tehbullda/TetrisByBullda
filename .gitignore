@@ -212,3 +212,6 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+Tetris/Tetris/Debug/Tetris.tlog/link.read.1.tlog
+Tetris/Tetris/Debug/Tetris.tlog/CL.read.1.tlog
+Tetris/Debug/Tetris.exe
