@@ -112,6 +112,7 @@ std::string Block::GetType() const {
 }
 
 Tile Block::GetTileFromShape(int tilenumber) const {
+	// TODO: should check for out of bounds
 	return m_shape[tilenumber - 1];
 }
 
