@@ -32,6 +32,7 @@ private:
 	TextureManager *m_texture_manager;
 	InputConverter *m_input_converter;
 	std::string m_input;
+	sf::Sprite m_bg_grid;
 
 	std::string m_next, m_state;
 

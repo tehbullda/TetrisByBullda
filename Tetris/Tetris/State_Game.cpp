@@ -19,6 +19,9 @@ bool State_Game::Enter() {
 	m_input_converter = new InputConverter;
 	m_input_converter->SetDefaultBinds();
 
+	m_bg_grid.setTexture(*m_texture_manager->Load("Background_340x640plus2x2border.png"));
+	m_bg_grid.setPosition(468, 38);
+
 	m_input = "";
 	return true;
 }
@@ -37,6 +40,7 @@ bool State_Game::Update(float deltatime) {
 }
 void State_Game::Draw() {
 	DrawBG();
+	m_window->draw(m_bg_grid);
 	m_block_manager->DrawBlocks(m_window);
 }
 

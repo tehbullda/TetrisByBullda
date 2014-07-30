@@ -29,7 +29,7 @@ void BlockManager::AddBlock(Block* block) {
 		m_blocks.push_back(block);
 		m_current_block = block;
 		for (unsigned int i = 0; i < m_tilegrid.size(); i++) {
-			for (int j = 1; j < MAX_TILES_PER_BLOCK; j++) {
+			for (int j = 1; j <= MAX_TILES_PER_BLOCK; j++) {
 				if (m_tilegrid[i].x == block->GetTileFromShape(j).x) {
 					if (m_tilegrid[i].y == block->GetTileFromShape(j).y) {
 						if (m_tilegrid[i].open) {
@@ -76,7 +76,7 @@ bool BlockManager::ValidateMove(std::string move) {
 
 void BlockManager::DrawBlocks(sf::RenderWindow *window) {
 	for (unsigned int i = 0; i < m_blocks.size(); i++){
-		for (int j = 1; j < MAX_TILES_PER_BLOCK; j++) {
+		for (int j = 1; j <= MAX_TILES_PER_BLOCK; j++) {
 			if (!m_blocks[i]->GetTileFromShape(j).open) { // If any of the four tiles in the shape has been removed due to a line-removal then that tile will not be drawn
 				window->draw(m_blocks[i]->GetTileFromShape(j).sprite);
 			}
