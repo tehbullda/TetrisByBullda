@@ -3,6 +3,10 @@
 #include "BlockManager.h"
 #include "InputConverter.h"
 #include "TextureManager.h"
+#include "TextWriter.h"
+
+using namespace btetris;
+using namespace std;
 
 State_Game::State_Game(sf::RenderWindow *window) {
 	m_window = window;
@@ -36,12 +40,21 @@ bool State_Game::Update(float deltatime) {
 	else {
 		m_block_manager->Update(deltatime);
 	}
+
 	return false;
 }
 void State_Game::Draw() {
 	DrawBG();
+
 	m_window->draw(m_bg_grid);
 	m_block_manager->DrawBlocks(m_window);
+
+	// should be elsewhere
+	TextWriter writer;
+	writer.setPosition(0, 0);
+	writer.setText("Tetris!");
+	writer.write(*m_window);
+
 }
 
 void State_Game::DrawBG() {
