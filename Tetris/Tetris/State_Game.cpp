@@ -18,7 +18,7 @@ State_Game::~State_Game(void){
 bool State_Game::Enter() {
 	m_texture_manager = new TextureManager("../data/textures/");
 	m_block_manager = new BlockManager(m_texture_manager);
-	m_block_manager->SetBlockSpeed(3);
+	m_block_manager->SetBlockSpeed(0.25f);
 
 	m_input_converter = new InputConverter;
 	m_input_converter->SetDefaultBinds();
@@ -70,6 +70,7 @@ bool State_Game::IsType(std::string check) {
 }
 
 bool State_Game::UpdateEvents() {
+	m_block_manager->SetBlockSpeed(0.25f);
 	sf::Event e;
 	while (m_window->pollEvent(e)) {
 		if (e.type == sf::Event::Closed) {
@@ -78,7 +79,7 @@ bool State_Game::UpdateEvents() {
 		}
 		else if (e.type == sf::Event::KeyPressed) {
 			if (m_input_converter->GetKey(InputConverter::Action::KEY_BOOST) == e.key.code) {
-				m_block_manager->SetBlockSpeed(10);
+				m_block_manager->SetBlockSpeed(2.0f);
 			}
 			if (m_input_converter->GetKey(InputConverter::Action::KEY_LEFT) == e.key.code) {
 				m_input = "Left";
@@ -95,7 +96,6 @@ bool State_Game::UpdateEvents() {
 		}
 		else if (e.type == sf::Event::KeyReleased) {
 			m_input = "";
-			m_block_manager->SetBlockSpeed(3);
 		}
 
 	}

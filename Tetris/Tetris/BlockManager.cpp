@@ -51,7 +51,7 @@ void BlockManager::Update(float deltatime, std::string input) {
 		if (m_current_block->IsActive() && input != "Down"){
 			MoveBlock(input);
 		}
-		if (m_current_block->IsActive() && input == "Down" && m_time > m_speed/2) {
+		if (m_current_block->IsActive() && input == "Down" && m_time > m_speed) {
 			MoveBlock(input);
 			m_time = 0.0f;
 		}
@@ -89,8 +89,8 @@ void BlockManager::DrawBlocks(sf::RenderWindow *window) {
 	}*/
 }
 
-void BlockManager::SetBlockSpeed(int speed) {
-	if (speed > 0 && speed <= 10) {
-		m_speed = 11 - speed; // This is the time needed between updates of the blocks, higher value = slower.
+void BlockManager::SetBlockSpeed(float speed) {
+	if (speed >= 0.25f && speed <= 2.0f) {
+		m_speed = 2.25f - speed; // This is the time needed between updates of the blocks, higher value = slower.
 	}
 }

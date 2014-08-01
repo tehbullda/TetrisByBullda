@@ -18,7 +18,7 @@ public:
 
 	void DrawBlocks(sf::RenderWindow *window);
 
-	void SetBlockSpeed(int speed);
+	void SetBlockSpeed(float speed);
 
 private:
 	TextureManager *m_texture_manager;
@@ -26,6 +26,6 @@ private:
 	std::vector<Tile> m_tilegrid;
 	const static int m_maxgridWidth, m_maxgridHeight, m_maxTilesperBlock;
 	Block *m_current_block;
-	int m_speed;
+	float m_speed;
 	float m_time;
 };
