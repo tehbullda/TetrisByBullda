@@ -138,6 +138,21 @@ bool Block::MoveBlockDown() {
 	return true;
 }
 
+bool Block::MoveBlockLeft() {
+	for (int i = 0; i < m_shape.size(); i++) {
+		m_shape[i].x--;
+	}
+	SetSpritePositions();
+	return true;
+}
+bool Block::MoveBlockRight() {
+	for (int i = 0; i < m_shape.size(); i++) {
+		m_shape[i].x++;
+	}
+	SetSpritePositions();
+	return true;
+}
+
 bool Block::IsActive() const {
 	return m_active;
 }

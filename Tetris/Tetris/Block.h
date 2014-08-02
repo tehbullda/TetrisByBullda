@@ -26,6 +26,8 @@ public:
 
 	Tile GetTileFromShape(int tilenumber) const;
 	bool MoveBlockDown();
+	bool MoveBlockLeft();
+	bool MoveBlockRight();
 	bool IsActive() const;
 
 private:

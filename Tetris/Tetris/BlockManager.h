@@ -13,6 +13,7 @@ public:
 	void AddBlock(Block* block);
 
 	void Update(float deltatime, std::string input = "Down");
+	void UpdateGrid();
 	void MoveBlock(std::string dir);
 	bool ValidateMove(std::string move);
 

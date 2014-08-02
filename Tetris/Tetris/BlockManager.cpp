@@ -61,17 +61,66 @@ void BlockManager::Update(float deltatime, std::string input) {
 	}
 }
 
+void BlockManager::UpdateGrid() {
+
+}
+
 void BlockManager::MoveBlock(std::string dir) {
 	std::cout << dir << std::endl;
 	if (ValidateMove(dir)) {
 		if (dir == "Down") {
-			m_current_block->MoveBlockDown(); //bool returned
-		} //osv.
+			m_current_block->MoveBlockDown(); //bool returned	
+		}
+		if (dir == "Left") {
+			m_current_block->MoveBlockLeft();
+		}
+		if (dir == "Right") {
+			m_current_block->MoveBlockRight();
+		}
+		UpdateGrid();
 	} 
 }
 
 bool BlockManager::ValidateMove(std::string move) {
-	return true;
+	bool ret = true;
+	if (move == "Down") {
+		for (int i = 1; i <= MAX_TILES_PER_BLOCK; i++) {
+			if (m_current_block->GetTileFromShape(i).y == 19) {
+				ret = false;
+				AddBlock(new Block(static_cast<BlockType>(Randomizer::GetRandomInt(1, 7)), m_texture_manager)); //This should not be in this method
+			}
+			for (int j = 0; j < m_blocks.size(); j++) {
+				if (m_blocks[j] != m_current_block) {
+					for (int k = 1; k <= MAX_TILES_PER_BLOCK; k++) {
+						for (int l = 1; l <= MAX_TILES_PER_BLOCK; l++) {
+							if (m_current_block->GetTileFromShape(k).y + 1 == m_blocks[j]->GetTileFromShape(l).y) {
+								if (m_current_block->GetTileFromShape(k).x == m_blocks[j]->GetTileFromShape(l).x) {
+									ret = false;
+									AddBlock(new Block(static_cast<BlockType>(Randomizer::GetRandomInt(1, 7)), m_texture_manager)); //Or this
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	if (move == "Left") {
+		for (int i = 1; i <= MAX_TILES_PER_BLOCK; i++) {
+			if (m_current_block->GetTileFromShape(i).x == 0) {
+				ret = false;
+			}
+		}
+	}
+	if (move == "Right") {
+		for (int i = 1; i <= MAX_TILES_PER_BLOCK; i++) {
+			if (m_current_block->GetTileFromShape(i).x == 9) {
+				ret = false;
+			}
+		}
+	}
+
+	return ret;
 }
 
 void BlockManager::DrawBlocks(sf::RenderWindow *window) {
