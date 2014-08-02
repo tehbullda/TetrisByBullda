@@ -13,11 +13,11 @@ m_maxTilesperBlock(4) */{
 	m_texture_manager = tex_mgr;
 	for (int i = 0; i < GRID_MAX_WIDTH; i++) {
 		for (int j = 0; j < GRID_MAX_HEIGHT; j++) {
-			Tile tile = {i,j,true};
+			Tile tile = { i, j, true };
 			m_tilegrid.push_back(tile);
 		}
 	}
-	
+
 }
 
 BlockManager::~BlockManager() {
@@ -78,7 +78,7 @@ void BlockManager::MoveBlock(std::string dir) {
 			m_current_block->MoveBlockRight();
 		}
 		UpdateGrid();
-	} 
+	}
 }
 
 bool BlockManager::ValidateMove(std::string move) {
@@ -110,12 +110,38 @@ bool BlockManager::ValidateMove(std::string move) {
 			if (m_current_block->GetTileFromShape(i).x == 0) {
 				ret = false;
 			}
+			for (int j = 0; j < m_blocks.size(); j++) {
+				if (m_blocks[j] != m_current_block) {
+					for (int k = 1; k <= MAX_TILES_PER_BLOCK; k++) {
+						for (int l = 1; l <= MAX_TILES_PER_BLOCK; l++) {
+							if (m_current_block->GetTileFromShape(k).y == m_blocks[j]->GetTileFromShape(l).y) {
+								if (m_current_block->GetTileFromShape(k).x - 1 == m_blocks[j]->GetTileFromShape(l).x) {
+									ret = false;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 	if (move == "Right") {
 		for (int i = 1; i <= MAX_TILES_PER_BLOCK; i++) {
 			if (m_current_block->GetTileFromShape(i).x == 9) {
 				ret = false;
+			}
+			for (int j = 0; j < m_blocks.size(); j++) {
+				if (m_blocks[j] != m_current_block) {
+					for (int k = 1; k <= MAX_TILES_PER_BLOCK; k++) {
+						for (int l = 1; l <= MAX_TILES_PER_BLOCK; l++) {
+							if (m_current_block->GetTileFromShape(k).y == m_blocks[j]->GetTileFromShape(l).y) {
+								if (m_current_block->GetTileFromShape(k).x + 1 == m_blocks[j]->GetTileFromShape(l).x) {
+									ret = false;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -133,9 +159,9 @@ void BlockManager::DrawBlocks(sf::RenderWindow *window) {
 	}
 	/*for (int i = 0; i < m_tilegrid.size(); i++) { // Another way to do the same thing, not sure which one is best
 		if (!m_tilegrid[i].open) {
-			window->draw(m_tilegrid[i].sprite);
+		window->draw(m_tilegrid[i].sprite);
 		}
-	}*/
+		}*/
 }
 
 void BlockManager::SetBlockSpeed(float speed) {
