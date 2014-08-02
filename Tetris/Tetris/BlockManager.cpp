@@ -47,12 +47,19 @@ void BlockManager::AddBlock(Block* block) {
 
 void BlockManager::Update(float deltatime, std::string input) {
 	m_time += deltatime;
-	if (m_current_block != nullptr){
-		if (m_current_block->IsActive() && input != "Down"){
-			MoveBlock(input);
+	m_forced_inputDelay += deltatime;
+	if (m_current_block != nullptr && m_current_block->IsActive()) {
+		if (input == "Drop" && m_forced_inputDelay >= 0.2f) {
+			while (m_current_block->IsActive()) {
+				MoveBlock("Down");
+			}
 		}
-		if (m_current_block->IsActive() && input == "Down" && m_time > m_speed) {
+		if (input != "Down" && m_forced_inputDelay >= 0.2f){
 			MoveBlock(input);
+			m_forced_inputDelay = 0.0f;
+		}
+		if (m_time > m_speed) {
+			MoveBlock("Down");
 			m_time = 0.0f;
 		}
 	}
@@ -87,7 +94,7 @@ bool BlockManager::ValidateMove(std::string move) {
 		for (int i = 1; i <= MAX_TILES_PER_BLOCK; i++) {
 			if (m_current_block->GetTileFromShape(i).y == 19) {
 				ret = false;
-				AddBlock(new Block(static_cast<BlockType>(Randomizer::GetRandomInt(1, 7)), m_texture_manager)); //This should not be in this method
+				m_current_block->SetActive(false);
 			}
 			for (int j = 0; j < m_blocks.size(); j++) {
 				if (m_blocks[j] != m_current_block) {
@@ -96,7 +103,7 @@ bool BlockManager::ValidateMove(std::string move) {
 							if (m_current_block->GetTileFromShape(k).y + 1 == m_blocks[j]->GetTileFromShape(l).y) {
 								if (m_current_block->GetTileFromShape(k).x == m_blocks[j]->GetTileFromShape(l).x) {
 									ret = false;
-									AddBlock(new Block(static_cast<BlockType>(Randomizer::GetRandomInt(1, 7)), m_texture_manager)); //Or this
+									m_current_block->SetActive(false);
 								}
 							}
 						}

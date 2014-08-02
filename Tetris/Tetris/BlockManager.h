@@ -28,5 +28,5 @@ private:
 	const static int m_maxgridWidth, m_maxgridHeight, m_maxTilesperBlock;
 	Block *m_current_block;
 	float m_speed;
-	float m_time;
+	float m_time, m_forced_inputDelay;
 };

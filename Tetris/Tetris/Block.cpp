@@ -133,6 +133,9 @@ Tile Block::GetTileFromShape(int tilenumber) const {
 bool Block::MoveBlockDown() {
 	for (int i = 0; i < m_shape.size(); i++) {
 		m_shape[i].y++;
+		if (m_shape[i].y == 19) {
+			SetActive(false);
+		}
 	}
 	SetSpritePositions();
 	return true;
@@ -155,6 +158,10 @@ bool Block::MoveBlockRight() {
 
 bool Block::IsActive() const {
 	return m_active;
+}
+
+void Block::SetActive(bool state) {
+	m_active = false;
 }
 
 void Block::SetSpritePositions() {

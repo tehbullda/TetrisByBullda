@@ -29,6 +29,7 @@ public:
 	bool MoveBlockLeft();
 	bool MoveBlockRight();
 	bool IsActive() const;
+	void SetActive(bool state);
 
 private:
 	void SetSpritePositions();
