@@ -1,12 +1,12 @@
 #include "stdafx.h"
-#include "TextWriter.h"
+#include "DisplayableText.h"
 #include <iostream>
 #include "SFML\Graphics\Text.hpp"
 
 using namespace btetris;
 using namespace std;
 
-TextWriter::TextWriter()
+DisplayableText::DisplayableText()
 {
 	m_xPos = 0;
 	m_yPos = 0;
@@ -24,23 +24,23 @@ TextWriter::TextWriter()
 	}
 }
 
-void TextWriter::setPosition(int xPos, int yPos)
+void DisplayableText::setPosition(float xPos, float yPos)
 {
 	m_xPos = xPos;
 	m_yPos = yPos;
 }
 
-void TextWriter::setCharacterSize(int characterSize)
+void DisplayableText::setCharacterSize(int characterSize)
 {
 	m_characterSize = characterSize;
 }
 
-void TextWriter::setText(const std::string& text)
+void DisplayableText::setText(const std::string& text)
 {
 	m_text = text;
 }
 
-void TextWriter::write(sf::RenderWindow& window) const
+void DisplayableText::render(sf::RenderWindow& window) const
 {
 	sf::Text graphicsText;
 	graphicsText.setFont(m_font);

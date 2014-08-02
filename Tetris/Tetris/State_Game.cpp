@@ -3,7 +3,7 @@
 #include "BlockManager.h"
 #include "InputConverter.h"
 #include "TextureManager.h"
-#include "TextWriter.h"
+#include "DisplayableText.h"
 
 using namespace btetris;
 using namespace std;
@@ -50,10 +50,10 @@ void State_Game::Draw() {
 	m_block_manager->DrawBlocks(m_window);
 
 	// should be elsewhere
-	TextWriter writer;
-	writer.setPosition(0, 0);
-	writer.setText("Tetris!");
-	writer.write(*m_window);
+	DisplayableText text;
+	text.setPosition(0, 0);
+	text.setText("Tetris!");
+	text.render(*m_window);
 
 }
 

@@ -51,7 +51,7 @@
     <ClInclude Include="TextureManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextWriter.h">
+    <ClInclude Include="DisplayableText.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -86,7 +86,7 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextWriter.cpp">
+    <ClCompile Include="DisplayableText.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

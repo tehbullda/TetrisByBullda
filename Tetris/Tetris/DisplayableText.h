@@ -7,19 +7,19 @@
 
 namespace btetris
 {
-	class TextWriter
+	class DisplayableText
 	{
 	public:
-		TextWriter();
+		DisplayableText();
 
-		void setPosition(int xPos,int yPos);
+		void setPosition(float xPos, float yPos);
 		void setText(const std::string& text);
 		void setCharacterSize(int characterSize);
-		void write(sf::RenderWindow& window) const;
+		void render(sf::RenderWindow& window) const;
 
 	private:
-		int m_xPos;
-		int m_yPos;
+		float m_xPos;
+		float m_yPos;
 		int m_characterSize;
 		std::string m_text;
 		sf::Font m_font;
