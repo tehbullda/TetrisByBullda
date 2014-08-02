@@ -156,6 +156,12 @@ bool Block::MoveBlockRight() {
 	return true;
 }
 
+bool Block::RotateBlock() {
+	for (int i = 0; i < m_shape.size(); i++) {
+
+	}
+}
+
 bool Block::IsActive() const {
 	return m_active;
 }

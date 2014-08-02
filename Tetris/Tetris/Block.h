@@ -28,6 +28,8 @@ public:
 	bool MoveBlockDown();
 	bool MoveBlockLeft();
 	bool MoveBlockRight();
+	bool RotateBlock();
+
 	bool IsActive() const;
 	void SetActive(bool state);
 

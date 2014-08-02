@@ -84,6 +84,9 @@ void BlockManager::MoveBlock(std::string dir) {
 		if (dir == "Right") {
 			m_current_block->MoveBlockRight();
 		}
+		if (dir == "Rotate") {
+			m_current_block->RotateBlock();
+		}
 		UpdateGrid();
 	}
 }
@@ -152,7 +155,9 @@ bool BlockManager::ValidateMove(std::string move) {
 			}
 		}
 	}
-
+	if (move == "Rotate") {
+		m_time -= 0.2f; //Many versions of tetris make it possible to delay the block lock-in at the bottom by rotation, this simulates that added grace-period
+	}
 	return ret;
 }
 
