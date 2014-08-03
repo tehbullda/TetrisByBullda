@@ -160,6 +160,8 @@ bool Block::RotateBlock() {
 	for (int i = 0; i < m_shape.size(); i++) {
 
 	}
+
+	return false;
 }
 
 bool Block::IsActive() const {

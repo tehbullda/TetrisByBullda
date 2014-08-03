@@ -88,6 +88,8 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="InputConverter.h" />
     <ClInclude Include="Randomizer.h" />
+    <ClInclude Include="ScoreCache.h" />
+    <ClInclude Include="ScoreKeeper.h" />
     <ClInclude Include="ScoreRenderer.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateManager.h" />
@@ -103,6 +105,8 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="InputConverter.cpp" />
     <ClCompile Include="Randomizer.cpp" />
+    <ClCompile Include="ScoreCache.cpp" />
+    <ClCompile Include="ScoreKeeper.cpp" />
     <ClCompile Include="ScoreRenderer.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="State_Game.cpp" />

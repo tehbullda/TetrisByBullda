@@ -3,9 +3,7 @@
 #include "BlockManager.h"
 #include "InputConverter.h"
 #include "TextureManager.h"
-#include "DisplayableText.h"
 
-using namespace btetris;
 using namespace std;
 
 State_Game::State_Game(sf::RenderWindow *window) {
@@ -48,13 +46,6 @@ void State_Game::Draw() {
 
 	m_window->draw(m_bg_grid);
 	m_block_manager->DrawBlocks(m_window);
-
-	// should be elsewhere
-	DisplayableText text;
-	text.setPosition(0, 0);
-	text.setText("Tetris!");
-	text.render(*m_window);
-
 }
 
 void State_Game::DrawBG() {
