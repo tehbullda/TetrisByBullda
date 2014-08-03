@@ -174,6 +174,8 @@ void BlockManager::DrawBlocks(sf::RenderWindow *window) {
 		window->draw(m_tilegrid[i].sprite);
 		}
 		}*/
+
+	m_scoreKeeper.renderScores(*window);
 }
 
 void BlockManager::SetBlockSpeed(float speed) {

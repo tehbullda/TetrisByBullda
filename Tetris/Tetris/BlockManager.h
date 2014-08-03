@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include <list>
 #include "Block.h"
+#include "ScoreKeeper.h"
 
 class TextureManager;
 
@@ -29,4 +30,6 @@ private:
 	Block *m_current_block;
 	float m_speed;
 	float m_time, m_forced_inputDelay;
+
+	btetris::ScoreKeeper m_scoreKeeper;
 };
