@@ -57,10 +57,16 @@
     <ClInclude Include="ScoreRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScoreCache.h">
+    <ClInclude Include="ScoreKeeper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScoreKeeper.h">
+    <ClInclude Include="HighScoreList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HighScoreRecord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreUpdater.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -101,10 +107,16 @@
     <ClCompile Include="ScoreRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ScoreCache.cpp">
+    <ClCompile Include="ScoreKeeper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ScoreKeeper.cpp">
+    <ClCompile Include="HighScoreRecord.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HighScoreList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreUpdater.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

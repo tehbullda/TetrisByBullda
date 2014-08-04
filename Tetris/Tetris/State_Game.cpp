@@ -25,9 +25,22 @@ bool State_Game::Enter() {
 	m_bg_grid.setPosition(468, 38);
 
 	m_input = "";
+
+	if (!m_scoreUpdater.Initialize(m_window))
+	{
+		return false;
+	}
+
 	return true;
 }
 void State_Game::Exit() {
+
+	if (m_scoreUpdater.IsHighScore())
+	{
+		m_scoreUpdater.EndGame("NoName");
+	}
+
+	m_scoreUpdater.Finalize();
 	m_input_converter->SaveBinds("../data/bindings/binds.ini");
 }
 
@@ -46,6 +59,7 @@ void State_Game::Draw() {
 
 	m_window->draw(m_bg_grid);
 	m_block_manager->DrawBlocks(m_window);
+	m_scoreUpdater.IncreaseScoreBy(1);
 }
 
 void State_Game::DrawBG() {

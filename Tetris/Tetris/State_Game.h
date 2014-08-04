@@ -1,6 +1,7 @@
 #pragma once
 
 #include "State.h"
+#include "ScoreUpdater.h"
 
 class BlockManager;
 class TextureManager;
@@ -36,5 +37,5 @@ private:
 
 	std::string m_next, m_state;
 
-
+	btetris::ScoreUpdater m_scoreUpdater;
 };

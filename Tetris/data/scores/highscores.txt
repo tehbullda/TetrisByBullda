@@ -1,0 +1,5 @@
+Gordon Freeman,30000
+Super Mario,20000
+Nathan Drake,16000
+Lara Croft,15000
+Max Payne,10000

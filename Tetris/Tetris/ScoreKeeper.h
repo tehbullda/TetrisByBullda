@@ -2,7 +2,8 @@
 
 #include "stdafx.h"
 #include "ScoreRenderer.h"
-#include "ScoreCache.h"
+#include "HighScoreRecord.h"
+#include "HighScoreList.h"
 
 namespace btetris
 {
@@ -11,11 +12,16 @@ namespace btetris
 	{
 	public:
 		ScoreKeeper();
-		void updateCurrentScore(int score);
-		void renderScores(sf::RenderWindow& window) const;
-		void storePersistently() const;
+		bool Initialize();
+		void IncreaseScoreBy(int score);
+		HighScoreRecord GetHighScore() const;
+		HighScoreRecord GetCurrentScore() const;
+		HighScoreRecord GetNextOnList() const;
+		bool IsHighScore() const;
+
+		void UpdateHighScore(const std::string& playerName);
 	private:
-		ScoreRenderer m_scoreRenderer;
-		ScoreCache m_scoreCache;
+		HighScoreRecord m_currentScoreRecord;
+		HighScoreList m_highScoreList;
 	};
 }
